@@ -10,6 +10,8 @@ target 'ReactNativeGerolocation' do
 
   pod 'react-native-location', :path => '../node_modules/react-native-location'
 
+  pod 'react-native-maps', :path => '../node_modules/react-native-maps'
+
   target 'ReactNativeGerolocationTests' do
     inherit! :complete
     # Pods for testing
