@@ -3,20 +3,13 @@ import { Button, Linking, StyleSheet, Text, View } from 'react-native';
 import RNLocation from 'react-native-location';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
-
 RNLocation.configure({
   distanceFilter: 0//configure the distance to default value in meters
 })
 
 const App = ({ url }) => {
-
-  const [viewLocation, isViewLocation] = useState([
-    viewLocation.longitude = 0,
-    viewLocation.latitude = 0
-  ]);
-
+  const [viewLocation, isViewLocation] = useState([]);
   const [tweet, setTweet] = useState([viewLocation.longitude, viewLocation.latitude]);
-
   const tweetLocation = () => {
     let twitterParameters = [];
 
@@ -61,6 +54,10 @@ const App = ({ url }) => {
       console.log(permission)
       userLocation = await RNLocation.getLatestLocation({ timeout: 100 })
       console.log(userLocation)
+      setPosition({
+        latitude: userLocation.latitude,
+        longitude: userLocation.longitude
+      });
       isViewLocation(userLocation)
     }
     else {
@@ -89,8 +86,8 @@ const App = ({ url }) => {
         provider={PROVIDER_GOOGLE}
         showsUserLocation
         initialRegion={{
-          latitude: { viewLocation.latitude },
-          longitude: viewLocation.longitude,
+          latitude: 11,
+          longitude: 11,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421
         }}
